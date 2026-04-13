@@ -16,13 +16,13 @@ TELEGRAM_APIKEY = getenv("TELEGRAM_APIKEY")
 
 bot = Bot(token=TELEGRAM_APIKEY)
 
-last_update_id = None  # 👈 evita repetir mensagens
+last_update_id = None  # 
 
 async def main():
     global last_update_id
 
     while True:
-        # 🔥 RECEBER MENSAGENS
+        # 
         updates = await bot.get_updates(offset=last_update_id)
 
         for update in updates:
@@ -34,7 +34,7 @@ async def main():
 
                 last_update_id = update.update_id + 1  # 👈 marca como lida
 
-        # 🔥 SEU CÓDIGO NORMAL (Binance)
+        # 
         agora = datetime.now()
         data_formatada = agora.strftime('%d/%m/%Y %H:%M:%S')
 
@@ -58,7 +58,7 @@ async def main():
 
                             await bot.send_message(
                                 chat_id=chat_id,
-                                text=f" BTC em {price:.2f} — Hora de comprar!"
+                                text=f"BTC em {price:.2f} — Hora de comprar!"
                             )
 
                         print(dados)
