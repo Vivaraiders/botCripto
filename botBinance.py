@@ -32,7 +32,7 @@ async def main():
 
                 print(f"Mensagem recebida: {texto}")
 
-                last_update_id = update.update_id + 1  # 👈 marca como lida
+                last_update_id = update.update_id + 1  # 
 
         # 
         agora = datetime.now()
