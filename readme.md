@@ -69,4 +69,4 @@ python main.py
 
 ## Autor
 
-Augusto
+Samuel Augusto
