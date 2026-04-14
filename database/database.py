@@ -1,5 +1,4 @@
 import mysql.connector
-from datetime import datetime,timedelta
 from os import getenv
 from dotenv import load_dotenv
 
@@ -25,24 +24,4 @@ def get_connection():
     except mysql.connector.Error as err:
         print(f'erro na conexão: {err}')
         return None
-    
-def add_user(conn,cursor, chat_id):
-    expires_at = datetime.now() + timedelta(days=30)
-
-    cursor.execute(
-    """
-        INSERT IGNORE INTO user(chat_id, is_active, plan, expires_at)
-        VALUES(%s, %s, %s, %s)
-    """, (chat_id, 'yes', 'free', expires_at))
-
-    conn.commit()
-
-def user_chatId(cursor):
-    cursor.execute(
-    """
-        SELECT chat_id
-        FROM user;
-    """)
-
-    result = cursor.fetchall()
-    return [row[0] for row in result]
+ 
