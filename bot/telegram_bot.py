@@ -1,5 +1,6 @@
 from database.users import add_user
 from services.cotarMoedas import cotarMoedas
+from database.coins import add_coin
 
 async def process_updates(bot, updates, users, conn, cursor): 
     global last_update_id
@@ -30,5 +31,5 @@ async def process_updates(bot, updates, users, conn, cursor):
                     chat_id=chat_id,
                     text=f'Moeda adicionada: {texto}'
                 )
-                    # moedas.append(texto)
+                add_coin(chat_id, texto)
                 
