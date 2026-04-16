@@ -8,6 +8,9 @@ from database.users import get_user_chatId
 from alerts.checker import check_alert
 from bot.telegram_bot import process_updates
 
+#CARREGA .ENV E TRÁS A APIKEY
+load_dotenv()
+TELEGRAM_APIKEY = getenv("TELEGRAM_APIKEY")
 
 #CONEXÃO COM BANCO DE DADOS
 try:
@@ -22,10 +25,6 @@ except Exception as e:
 if conn is None:
         print('Sem conexão com banco, fechando projeto')
         exit() 
-
-#CARREGA .ENV E TRÁS A APIKEY
-load_dotenv()
-TELEGRAM_APIKEY = getenv("TELEGRAM_APIKEY")
 
 #INSTANCIA O BOT
 bot = Bot(token=TELEGRAM_APIKEY)
