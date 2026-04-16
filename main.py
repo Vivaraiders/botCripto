@@ -34,7 +34,8 @@ last_update_id = None  #
 
 #Onde salva os alertas
 alertas_enviados = set()
-
+alerta_down = set()
+alerta_high = set()
 
 async def main():
     global last_update_id
@@ -48,7 +49,7 @@ async def main():
                 last_update_id = updates[-1].update_id + 1
 
             await process_updates(bot, updates, users, conn, cursor)
-            await check_alert(bot, users, alertas_enviados)
+            await check_alert(bot, users, alertas_enviados, alerta_down, alerta_high)
         
         except Exception as e:
              print(f"[error loop]: {e}")
