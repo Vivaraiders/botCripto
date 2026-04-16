@@ -9,7 +9,7 @@ from alerts.checker import check_alert
 from bot.telegram_bot import process_updates
 
 #CARREGA .ENV E TRÁS A APIKEY
-load_dotenv()
+
 TELEGRAM_APIKEY = getenv("TELEGRAM_APIKEY")
 
 #CONEXÃO COM BANCO DE DADOS
