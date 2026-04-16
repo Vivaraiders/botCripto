@@ -11,7 +11,6 @@ def get_connection():
             database=getenv("MYSQLDATABASE"),
             port=int(getenv("MYSQLPORT", 3306))
         )
-        print("conectou banco ✅")
         return conn
     except Exception as e:
         print("erro na conexão:", e)

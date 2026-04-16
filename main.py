@@ -1,8 +1,7 @@
 import asyncio
-from services.cotarMoedas import cotarMoedas
+from datetime import datetime
 from telegram import Bot
 from os import getenv
-from dotenv import load_dotenv
 from database.database import get_connection
 from database.users import get_user_chatId
 from alerts.checker import check_alert
@@ -34,14 +33,26 @@ last_update_id = None  #
 
 #Onde salva os alertas
 alertas_enviados = set()
-alerta_down = set()
-alerta_high = set()
+alertas_down = set()
+alertas_high = set()
 
 async def main():
     global last_update_id
-    
+    ultimo_reset = None
+
     while True:
         try:
+
+            h = datetime.now()
+            hoje = h.date()
+
+            if ultimo_reset != hoje:
+                 alertas_enviados.clear()
+                 alertas_down.clear()
+                 alertas_high.clear()
+                 ultimo_reset = hoje
+                 print('Reset Diario feito')
+
             users = get_user_chatId(cursor=cursor)
             updates = await bot.get_updates(offset=last_update_id)
 

@@ -22,7 +22,7 @@ async def check_alert(bot, users, alertas_enviados, alerta_down, alerta_high):
     for user in users:
         coins = find_user_coin(user)
 
-        print("RAW:", coins)
+        
 
         for coin in coins:
             dados = get_data(coin)
