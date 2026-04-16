@@ -1,7 +1,12 @@
 from database.database import get_connection
 
 conn = get_connection()
-cursor = conn.cursor()
+
+if conn is None:
+    print("Sem conexão com banco (arquivo coin)")
+    cursor = None
+else:
+    cursor = conn.cursor()
 
 def add_coin(chat_id, symbol):
     cursor.execute('SELECT id FROM users WHERE chat_id = %s',
