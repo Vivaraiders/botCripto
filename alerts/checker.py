@@ -69,21 +69,16 @@ async def alert_down(bot, user, change, coin, opened, price, alerta_down):
 
 
 async def alert_high(bot, user, change, coin, opened, price, alerta_high):
-    nivel = None
+    change = float(change)
 
-    if change >= 3:
-        nivel = 3
-    elif change >= 2:
-        nivel = 2
-    elif change >= 1:
-        nivel = 1
+    if change >= 1:
+        nivel = int(change)
 
-    if nivel is not None:
         key = f'{user}_{coin}_{nivel}_daily'
 
         if key not in alerta_high:
             await bot.send_message(
                 chat_id=user,
-                text=f'A moeda: {coin} está subindo {change}% \nValor de abertura:{opened}\nValor de agora:{price}'
+                text=f'A moeda: {coin} está subindo {change:.2f}% \nValor de abertura:{opened}\nValor de agora:{price}'
             )
             alerta_high.add(key)

@@ -69,3 +69,15 @@ async def main():
 
 if __name__ == '__main__':
     asyncio.run(main())
+
+
+
+async def preference_coins(users):
+    users = get_user_chatId(cursor=cursor)
+    updates = await bot.get_updates(offset=last_update_id)
+    for update in updates:
+        if update.message:
+            chat_id = update.message.chat.id
+     
+    if chat_id in users:
+        bot.send_

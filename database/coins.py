@@ -58,6 +58,7 @@ def find_user_coin(chat_id):
 
     coins = cursor.fetchall()
 
+    cursor.close()
     conn.close()
 
     return [coin[0] for coin in coins]
